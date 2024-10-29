@@ -1,0 +1,22 @@
+server:
+  port: 18084
+spring:
+  application:
+    name: seckill-monitor
+  cloud:
+    nacos:
+      config:
+        file-extension: yaml
+        server-addr: nacos-server:8848
+      discovery:
+        #Nacos的注册地址
+        server-addr: nacos-server:8848
+
+logging:
+  pattern:
+    console: "%msg%n"
+
+#超时配置
+ribbon:
+  ReadTimeout: 3000000
+  ConnectTimeout: 300000

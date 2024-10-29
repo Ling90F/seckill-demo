@@ -1,0 +1,36 @@
+target
+result
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.settings/
+.vscode/
+.springBeans
+.sts4-cache
+node_modules
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+
+### NetBeans ###
+/nbproject/private/
+/build/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+###日志
+/logs/
+*.logs
+*.log
+logs
+### course ###
+software

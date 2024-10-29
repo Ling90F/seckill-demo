@@ -1,0 +1,48 @@
+server:
+  port: 18085
+spring:
+  application:
+    name: seckill-order
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://db-server:3306/seckill_general_order?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: eVcWs1dsEgiv4ijEZ1b6
+  cloud:
+    nacos:
+      config:
+        file-extension: yaml
+        server-addr: nacos-server:8848
+      discovery:
+        #Nacos的注册地址
+        server-addr: nacos-server:8848
+  redis:
+    cluster:
+      nodes:
+        - redis-server:7001
+        - redis-server:7002
+        - redis-server:7003
+        - redis-server:7004
+        - redis-server:7005
+        - redis-server:7006
+
+  main:
+    allow-bean-definition-overriding: true
+logging:
+  pattern:
+    console: "%msg%n"
+
+hystrix:
+  command:
+    default:  #default全局有效，service id指定应用有效
+      execution:
+        timeout:
+          #是否开启超时熔断
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 100000 #断路器超时时间，默认1000ms
+#超时配置
+ribbon:
+  ReadTimeout: 3000000
+  ConnectTimeout: 300000

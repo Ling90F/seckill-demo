@@ -1,0 +1,25 @@
+server:
+  port: 18087
+logging:
+  pattern:
+    console: "%msg%n"
+spring:
+  application:
+    name: seckill-page
+  cloud:
+    nacos:
+      config:
+        file-extension: yaml
+        server-addr: nacos-server:8848
+      discovery:
+        #Nacos的注册地址
+        server-addr: nacos-server:8848
+  profiles:
+    active: dev #dev 开发环境 #test测试环境 #pro生产环境
+  main:
+    allow-bean-definition-overriding: true
+
+#超时配置
+ribbon:
+  ReadTimeout: 300000
+  ConnectTimeout: 30000
