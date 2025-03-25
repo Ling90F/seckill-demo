@@ -6,9 +6,6 @@ import tk.mybatis.mapper.common.Mapper;
 
 import java.util.List;
 
-/**
- * @author
- */
 public interface SkuActMapper extends Mapper<SkuAct> {
 
     @Select("SELECT sku_id FROM tb_sku_act WHERE activity_id=#{id} ORDER BY create_time desc limit 4")

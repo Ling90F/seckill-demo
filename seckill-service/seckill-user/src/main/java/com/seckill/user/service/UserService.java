@@ -3,9 +3,6 @@ package com.seckill.user.service;
 import com.github.pagehelper.PageInfo;
 import com.seckill.user.pojo.User;
 
-/**
- * @author
- */
 public interface UserService {
 
     /**

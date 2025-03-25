@@ -10,9 +10,7 @@ import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * @author
- */
+
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)

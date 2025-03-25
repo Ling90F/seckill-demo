@@ -6,9 +6,6 @@ import com.seckill.manager.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-/**
- * @author
- */
 @Service
 public class AdminServiceImpl implements AdminService {
 

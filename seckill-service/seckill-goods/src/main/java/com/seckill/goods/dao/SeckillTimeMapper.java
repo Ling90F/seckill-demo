@@ -5,8 +5,5 @@ import tk.mybatis.mapper.common.Mapper;
 
 import java.util.List;
 
-/**
- * @author
- */
 public interface SeckillTimeMapper extends Mapper<SeckillTime> {
 }

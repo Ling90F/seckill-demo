@@ -13,9 +13,6 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
-/**
- * @author
- */
 @Component
 public class AuthorizeFilter implements GlobalFilter, Ordered {
 

@@ -6,9 +6,7 @@ import com.seckill.goods.pojo.SeckillTime;
 
 import java.util.List;
 
-/**
- * @author
- */
+
 public interface ActivityService {
 
     /**

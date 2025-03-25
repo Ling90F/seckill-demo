@@ -5,9 +5,7 @@ import com.seckill.goods.pojo.Sku;
 
 import java.util.List;
 
-/**
- * @author
- */
+
 public interface SkuService {
 
     /**

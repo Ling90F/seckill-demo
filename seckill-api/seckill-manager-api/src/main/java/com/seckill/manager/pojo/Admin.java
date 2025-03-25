@@ -9,9 +9,6 @@ import java.io.Serializable;
 import java.lang.String;
 import java.lang.Integer;
 
-/**
- * @author
- */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)

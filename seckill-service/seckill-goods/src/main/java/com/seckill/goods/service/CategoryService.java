@@ -5,9 +5,7 @@ import com.seckill.goods.pojo.Category;
 
 import java.util.List;
 
-/**
- * @author
- */
+
 public interface CategoryService {
 
     /**

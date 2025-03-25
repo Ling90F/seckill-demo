@@ -6,9 +6,7 @@ import com.seckill.order.pojo.Order;
 import java.io.IOException;
 import java.util.Map;
 
-/**
- * @author
- */
+
 public interface OrderService {
 
     /**

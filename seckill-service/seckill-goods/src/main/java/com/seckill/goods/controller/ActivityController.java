@@ -11,9 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-/**
- * @author
- */
 @RestController
 @RequestMapping("/activity")
 @CrossOrigin

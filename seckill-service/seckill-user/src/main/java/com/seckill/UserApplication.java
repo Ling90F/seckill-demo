@@ -7,9 +7,7 @@ import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import tk.mybatis.spring.annotation.MapperScan;
 
-/**
- * @author
- */
+
 @SpringBootApplication(exclude = {RedisAutoConfiguration.class, RedissonAutoConfiguration.class})
 @EnableDiscoveryClient
 @MapperScan(basePackages = "com.seckill.user.dao")

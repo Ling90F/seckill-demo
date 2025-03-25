@@ -12,9 +12,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-/**
- * @author
- */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)

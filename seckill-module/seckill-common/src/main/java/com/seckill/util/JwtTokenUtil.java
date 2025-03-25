@@ -12,9 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-/**
- * @author
- */
+
 public class JwtTokenUtil {
 
     //秘钥

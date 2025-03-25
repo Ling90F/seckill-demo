@@ -15,9 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Date;
 import java.util.Map;
 
-/**
- * @author
- */
+
 @RestController
 @RequestMapping("/order")
 @CrossOrigin

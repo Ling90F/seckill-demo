@@ -5,9 +5,7 @@ import com.seckill.goods.pojo.Brand;
 
 import java.util.List;
 
-/**
- * @author
- */
+
 public interface BrandService {
 
     /**

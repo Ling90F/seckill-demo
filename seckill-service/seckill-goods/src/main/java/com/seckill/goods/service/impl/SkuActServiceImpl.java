@@ -17,9 +17,7 @@ import tk.mybatis.mapper.entity.Example;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-/**
- * @author
- */
+
 @Service
 public class SkuActServiceImpl implements SkuActService {
 

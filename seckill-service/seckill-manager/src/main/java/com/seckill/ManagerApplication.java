@@ -5,9 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import tk.mybatis.spring.annotation.MapperScan;
 
-/**
- * @author
- */
+
 @SpringBootApplication
 @EnableDiscoveryClient
 @MapperScan(basePackages = "com.seckill.manager.dao")

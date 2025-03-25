@@ -18,9 +18,7 @@ import tk.mybatis.mapper.entity.Example;
 
 import java.util.*;
 
-/**
- * @author
- */
+
 @Service
 public class SkuServiceImpl implements SkuService {
 
