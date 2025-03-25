@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * @author http://www.itheima.com
+ * @author
  */
 public class JwtTokenUtil {
 
@@ -91,9 +91,15 @@ public class JwtTokenUtil {
                 .getBody();
     }
 
+
+    /**
+     * @Description 测试
+     * @Param [args]
+     * @return void
+     **/
     public static void main(String[] args) throws Exception {
         Map<String, Object> payload = new HashMap<>();
-        payload.put("username", "itheima");
+        payload.put("username", "name");
         payload.put("aaa", "ccc");
         payload.put("bbb", "ddd");
         String token = generateTokenUser(UUID.randomUUID().toString(), payload, 10000000L);

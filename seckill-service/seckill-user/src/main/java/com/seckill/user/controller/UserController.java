@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * @author http://www.itheima.com
+ * @author
  */
 @RestController
 @RequestMapping("/user")
@@ -24,6 +24,31 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    /**
+     * 用户登录
+     */
+    @PostMapping(value = "/login")
+    public Result login(@RequestBody User param) throws Exception {
+        //1.根据用户名查询用户信息
+        User user = userService.findById(param.getUsername());
+        //2.用户不存在
+        if (user == null) {
+            return new Result(false, StatusCode.ERROR, "账号不存在！");
+        }
+        //3.密码错误
+        if (!user.getPassword().equals(DigestUtils.md5DigestAsHex(param.getPassword().getBytes()))) {
+            return new Result(false, StatusCode.ERROR, "密码错误！");
+        }
+        //4.登录成功
+        Map<String, Object> payload = new HashMap<>();
+        payload.put("username", user.getUsername());
+        payload.put("name", user.getName());
+        payload.put("phone", user.getPhone());
+        String token = JwtTokenUtil.generateTokenUser(UUID.randomUUID().toString(), payload, 86400000L);
+
+        return new Result(true, StatusCode.OK, "登录成功！", token);
+    }
 
     /**
      * user分页条件搜索实现

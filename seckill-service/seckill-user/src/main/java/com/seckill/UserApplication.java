@@ -8,7 +8,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import tk.mybatis.spring.annotation.MapperScan;
 
 /**
- * @author http://www.itheima.com
+ * @author
  */
 @SpringBootApplication(exclude = {RedisAutoConfiguration.class, RedissonAutoConfiguration.class})
 @EnableDiscoveryClient

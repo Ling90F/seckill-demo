@@ -11,7 +11,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * @author http://www.itheima.com
+ * @author
  */
 @Data
 @EqualsAndHashCode(callSuper = false)

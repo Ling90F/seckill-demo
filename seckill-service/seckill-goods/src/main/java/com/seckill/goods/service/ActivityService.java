@@ -7,7 +7,7 @@ import com.seckill.goods.pojo.SeckillTime;
 import java.util.List;
 
 /**
- * @author http://www.itheima.com
+ * @author
  */
 public interface ActivityService {
 

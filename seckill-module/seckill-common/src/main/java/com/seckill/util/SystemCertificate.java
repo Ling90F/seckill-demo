@@ -5,7 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 /**
- * @author http://www.itheima.com
+ * @author
  */
 @Data
 @EqualsAndHashCode(callSuper = false)

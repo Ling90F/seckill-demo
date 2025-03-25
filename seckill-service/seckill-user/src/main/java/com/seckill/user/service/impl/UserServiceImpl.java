@@ -14,13 +14,21 @@ import tk.mybatis.mapper.entity.Example;
 import java.util.List;
 
 /**
- * @author http://www.itheima.com
+ * @author
  */
 @Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserMapper userMapper;
+
+    /**
+     * 根据ID查询User
+     */
+    @Override
+    public User findById(String id){
+        return  userMapper.selectByPrimaryKey(id);
+    }
 
     @Override
     public PageInfo<User> findPage(User user, int page, int size) {

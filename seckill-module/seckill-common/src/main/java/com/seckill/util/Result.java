@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 /**
- * @author http://www.itheima.com
+ * @author
  * 返回实体
  */
 @Data

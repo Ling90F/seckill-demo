@@ -9,7 +9,7 @@ import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 import org.springframework.web.util.pattern.PathPatternParser;
 
 /**
- * @author http://www.itheima.com
+ * @author
  */
 @SpringBootApplication
 public class GatewayApplication {

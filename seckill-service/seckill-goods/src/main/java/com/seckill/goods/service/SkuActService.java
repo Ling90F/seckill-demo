@@ -8,7 +8,7 @@ import com.seckill.goods.pojo.SkuAct;
 import java.util.List;
 
 /**
- * @author http://www.itheima.com
+ * @author
  */
 public interface SkuActService {
 

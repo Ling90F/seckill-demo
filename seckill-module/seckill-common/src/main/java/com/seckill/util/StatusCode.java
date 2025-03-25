@@ -1,7 +1,7 @@
 package com.seckill.util;
 
 /**
- * @author http://www.itheima.com
+ * @author
  * 返回码
  */
 public class StatusCode {

@@ -4,7 +4,7 @@ import com.seckill.goods.pojo.Order;
 import tk.mybatis.mapper.common.Mapper;
 
 /**
- * @author http://www.itheima.com
+ * @author
  */
 public interface OrderMapper extends Mapper<Order> {
 }

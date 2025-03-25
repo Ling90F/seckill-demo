@@ -4,7 +4,7 @@ import com.seckill.goods.pojo.Category;
 import tk.mybatis.mapper.common.Mapper;
 
 /**
- * @author http://www.itheima.com
+ * @author
  */
 public interface CategoryMapper extends Mapper<Category> {
 }

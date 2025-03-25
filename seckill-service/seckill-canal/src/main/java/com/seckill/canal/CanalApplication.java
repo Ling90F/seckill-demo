@@ -5,9 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
- * @author http://www.itheima.com
+ * @author
  */
 @SpringBootApplication
+@EnableFeignClients(basePackages = {"com.seckill.search.feign","com.seckill.page.feign"})
 public class CanalApplication {
 
     public static void main(String[] args) {

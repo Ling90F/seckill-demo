@@ -14,7 +14,7 @@ import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 /**
- * @author http://www.itheima.com
+ * @author
  */
 @Component
 public class AuthorizeFilter implements GlobalFilter, Ordered {

@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * @author http://www.itheima.com
+ * @author
  */
 @RestController
 @RequestMapping("/admin")

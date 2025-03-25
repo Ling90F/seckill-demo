@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
- * @author http://www.itheima.com
+ * @author
  */
 @SpringBootApplication
 @EnableFeignClients(basePackages = {"com.seckill.goods.feign"})

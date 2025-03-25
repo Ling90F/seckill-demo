@@ -4,7 +4,7 @@ import com.seckill.goods.pojo.Brand;
 import tk.mybatis.mapper.common.Mapper;
 
 /**
- * @author http://www.itheima.com
+ * @author
  */
 public interface BrandMapper extends Mapper<Brand> {
 }

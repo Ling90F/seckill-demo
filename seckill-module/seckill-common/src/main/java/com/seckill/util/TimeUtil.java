@@ -14,11 +14,11 @@ import java.util.Locale;
 import java.util.Random;
 
 /**
- * @author http://www.itheima.com
+ * @author
  */
 public class TimeUtil {
 
-    //============================借助Calendar类获取今天、昨天、本周、上周、本年及特定时间的开始时间和结束时间（返回类型为date类型）========================
+    //借助Calendar类获取今天、昨天、本周、上周、本年及特定时间的开始时间和结束时间（返回类型为date类型）
 
     /**
      * 获取当天开始时间

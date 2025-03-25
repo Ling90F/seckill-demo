@@ -11,7 +11,7 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 /**
- * @author http://www.itheima.com
+ * @author
  */
 public class RedisConfig {
 

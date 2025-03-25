@@ -8,7 +8,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import tk.mybatis.spring.annotation.MapperScan;
 
 /**
- * @author http://www.itheima.com
+ * @author
  */
 @SpringBootApplication(exclude = ElasticsearchDataAutoConfiguration.class)
 // @SpringBootApplication

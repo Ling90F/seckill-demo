@@ -18,7 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
- * @author http://www.itheima.com
+ * @author
  */
 @Service
 public class SkuActServiceImpl implements SkuActService {

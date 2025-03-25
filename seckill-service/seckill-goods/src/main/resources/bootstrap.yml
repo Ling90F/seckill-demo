@@ -40,3 +40,13 @@ logging:
 ribbon:
   ReadTimeout: 3000000
   ConnectTimeout: 300000
+
+#配置elastic-job
+elaticjob:
+  zookeeper:
+    server-lists: zk-server:3181 #zookeeper的地址
+    namespace: updatetask #定时任务命名空间
+
+# 动态定时任务
+zkserver: zk-server:3181
+zknamespace: zknamesp

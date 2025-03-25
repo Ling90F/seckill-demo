@@ -4,7 +4,7 @@ import com.seckill.goods.pojo.UndoLog;
 import tk.mybatis.mapper.common.Mapper;
 
 /**
- * @author http://www.itheima.com
+ * @author
  */
 public interface UndoLogMapper extends Mapper<UndoLog> {
 }

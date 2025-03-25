@@ -4,9 +4,15 @@ import com.github.pagehelper.PageInfo;
 import com.seckill.user.pojo.User;
 
 /**
- * @author http://www.itheima.com
+ * @author
  */
 public interface UserService {
+
+    /**
+     * 根据ID查询User
+     * @return
+     */
+    User findById(String id);
 
     /**
      * User多条件分页查询

@@ -7,9 +7,20 @@ import java.io.IOException;
 import java.util.Map;
 
 /**
- * @author http://www.itheima.com
+ * @author
  */
 public interface OrderService {
+
+    /**
+     * 热点数据下单
+     * @param orderMap
+     */
+    void addHotOrder(Map<String, String> orderMap);
+
+    /**
+     * 添加订单
+     */
+    int add(Order order);
 
     /**
      * Order多条件分页查询

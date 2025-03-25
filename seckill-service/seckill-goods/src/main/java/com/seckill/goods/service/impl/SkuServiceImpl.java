@@ -16,13 +16,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import tk.mybatis.mapper.entity.Example;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
- * @author http://www.itheima.com
+ * @author
  */
 @Service
 public class SkuServiceImpl implements SkuService {
@@ -39,8 +36,100 @@ public class SkuServiceImpl implements SkuService {
     @Autowired
     private RedisTemplate redisTemplate;
 
+    /**
+     * 库存递减
+     */
+    @Override
+    public int dcount(String id, Integer count) {
+        //1.调用Dao实现递减
+        int dcount = skuMapper.dcount(id, count);
+        //2.递减失败
+        if (dcount == 0) {
+            //查询
+            Sku sku = skuMapper.selectByPrimaryKey(id);
+            //2.1递减失败原因->库存不足->405
+            if (sku.getSeckillNum() < count) {
+                return StatusCode.DECOUNT_NUM;
+            } else if (sku.getIslock() == 2) {
+                //2.2递减失败原因->变成热点->205
+                return StatusCode.DECOUNT_HOT;
+            }
+            return 0;
+        }
+        return StatusCode.DECOUNT_OK;
+    }
+
+    /**
+     * 热点商品隔离
+     */
+    @Override
+    public void hotIsolation(String id) {
+        //1.数据库该商品进行锁定操作
+        Sku sku = new Sku();
+        sku.setIslock(2);   //锁定
+
+        Example example = new Example(Sku.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("islock", 1);
+        criteria.andEqualTo("id", id);
+        //执行锁定
+        int count = skuMapper.updateByExampleSelective(sku, example);
+
+        //2.锁定成功了，则把商品存入到Redis缓存进行隔离
+        if (count > 0) {
+            String key = "SKU_" + id;
+            Sku currentSku = skuMapper.selectByPrimaryKey(id);
+            //存储商品数量
+            redisTemplate.boundHashOps(key).increment("num",currentSku.getSeckillNum());
+            //存储商品信息
+            Map<String,Object> info = new HashMap<String,Object>();
+            info.put("id",id);
+            info.put("price",currentSku.getSeckillPrice());
+            info.put("name",currentSku.getName());
+            redisTemplate.boundHashOps(key).put("info",info);
+        }
+    }
 
 
+    /**
+     * @Description 分页加载
+     * @Param [page, size]
+     * @return java.util.List<com.seckill.goods.pojo.Sku>
+     **/
+    @Override
+    public List<Sku> list(int page, int size) {
+        //分页
+        PageHelper.startPage(page,size);
+
+        //条件构建
+        Example example = new Example(Sku.class);
+        Example.Criteria criteria = example.createCriteria();
+        //秒杀剩余商品数量>0
+        criteria.andGreaterThan("seckillNum",0);
+        //状态为参与秒杀，1:普通商品，2:参与秒杀
+        criteria.andEqualTo("status","2");
+        //秒杀结束时间>=当前时间
+        criteria.andGreaterThanOrEqualTo("seckillEnd",new Date());
+        return skuMapper.selectByExample(example);
+    }
+
+    /**
+     * @Description 总数量加载
+     * @Param []
+     * @return java.lang.Integer
+     **/
+    @Override
+    public Integer count() {
+        Example example = new Example(Sku.class);
+        Example.Criteria criteria = example.createCriteria();
+        //秒杀剩余商品数量>0
+        criteria.andGreaterThan("seckillNum",0);
+        //状态为参与秒杀，1:普通商品，2:参与秒杀
+        criteria.andEqualTo("status","2");
+        //秒杀结束时间>=当前时间
+        criteria.andGreaterThanOrEqualTo("seckillEnd",new Date());
+        return skuMapper.selectCountByExample(example);
+    }
 
     /**
      * Sku条件+分页查询

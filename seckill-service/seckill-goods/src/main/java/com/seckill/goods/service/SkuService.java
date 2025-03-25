@@ -6,9 +6,28 @@ import com.seckill.goods.pojo.Sku;
 import java.util.List;
 
 /**
- * @author http://www.itheima.com
+ * @author
  */
 public interface SkuService {
+
+    /**
+     * 库存递减
+     */
+    int dcount(String id, Integer count);
+    /**
+     * 热点商品隔离
+     */
+    void hotIsolation(String id);
+
+    /**
+     * 分页加载
+     */
+    List<Sku> list(int page, int size);
+
+    /**
+     * 总数量加载
+     */
+    Integer count();
 
     /**
      * Sku多条件分页查询

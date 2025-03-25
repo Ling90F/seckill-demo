@@ -16,7 +16,7 @@ import java.util.Date;
 import java.util.Map;
 
 /**
- * @author http://www.itheima.com
+ * @author
  */
 @RestController
 @RequestMapping("/order")
@@ -28,6 +28,44 @@ public class OrderController {
 
     @Autowired
     private IdWorker idWorker;
+
+
+    /**
+     * 添加订单
+     */
+    @PostMapping(value = "/add/{id}")
+    public Result add(@PathVariable(value = "id") String id, @RequestHeader(value = "Authorization") String authorization) {
+        String username;
+        try {
+            //解析令牌
+            Map<String, Object> tokenMap = JwtTokenUtil.parseToken(authorization);
+            username = tokenMap.get("username").toString();
+        } catch (Exception e) {
+            return new Result(false, StatusCode.TOKEN_ERROR, "令牌无效！");
+        }
+        //封装Order
+        Order order = new Order();
+        order.setId("No" + idWorker.nextId());
+        order.setSkuId(id);
+        order.setCreateTime(new Date());
+        order.setUpdateTime(order.getCreateTime());
+        order.setUsername(username);
+        order.setTotalNum(1);
+        //添加订单
+        int code = orderService.add(order);
+        switch (code) {
+            case StatusCode.ORDER_OK:
+                return new Result(true, StatusCode.ORDER_OK, order.getId());
+            case StatusCode.DECOUNT_NUM:
+                return new Result(false, StatusCode.DECOUNT_NUM, "库存不足！");
+            case StatusCode.ORDER_QUEUE:
+                return new Result(true, StatusCode.ORDER_QUEUE, "排队抢购中！");
+            default:
+                return new Result(false, StatusCode.ERROR, "抢单发生异常！");
+        }
+    }
+
+
 
     /**
      * Order分页条件搜索实现

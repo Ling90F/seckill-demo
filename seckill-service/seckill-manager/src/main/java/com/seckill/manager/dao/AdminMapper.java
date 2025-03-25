@@ -4,7 +4,7 @@ import com.seckill.manager.pojo.Admin;
 import tk.mybatis.mapper.common.Mapper;
 
 /**
- * @author http://www.itheima.com
+ * @author
  */
 public interface AdminMapper extends Mapper<Admin> {
 }

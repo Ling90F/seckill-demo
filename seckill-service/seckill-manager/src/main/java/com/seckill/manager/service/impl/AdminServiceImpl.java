@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * @author http://www.itheima.com
+ * @author
  */
 @Service
 public class AdminServiceImpl implements AdminService {

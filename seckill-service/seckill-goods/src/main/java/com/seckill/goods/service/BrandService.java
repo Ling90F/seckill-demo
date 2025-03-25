@@ -6,7 +6,7 @@ import com.seckill.goods.pojo.Brand;
 import java.util.List;
 
 /**
- * @author http://www.itheima.com
+ * @author
  */
 public interface BrandService {
 

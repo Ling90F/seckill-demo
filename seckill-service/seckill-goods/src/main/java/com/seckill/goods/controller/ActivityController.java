@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
- * @author http://www.itheima.com
+ * @author
  */
 @RestController
 @RequestMapping("/activity")

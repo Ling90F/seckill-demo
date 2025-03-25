@@ -3,7 +3,7 @@ import com.seckill.user.pojo.User;
 import tk.mybatis.mapper.common.Mapper;
 
 /**
- * @author http://www.itheima.com
+ * @author
  */
 public interface UserMapper extends Mapper<User> {
 }

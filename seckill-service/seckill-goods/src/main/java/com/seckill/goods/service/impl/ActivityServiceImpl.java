@@ -7,6 +7,9 @@ import com.seckill.goods.dao.SeckillTimeMapper;
 import com.seckill.goods.pojo.Activity;
 import com.seckill.goods.pojo.SeckillTime;
 import com.seckill.goods.service.ActivityService;
+import com.seckill.goods.task.dynamic.DynamicJob;
+import com.seckill.goods.task.dynamic.DynamicTask;
+import com.seckill.goods.task.dynamic.ElasticJobDynamicConfig;
 import com.seckill.util.IdWorker;
 import com.seckill.util.TimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +20,7 @@ import tk.mybatis.mapper.entity.Example;
 import java.util.List;
 
 /**
- * @author http://www.itheima.com
+ * @author
  */
 @Service
 public class ActivityServiceImpl implements ActivityService {
@@ -30,6 +33,9 @@ public class ActivityServiceImpl implements ActivityService {
 
     @Autowired
     private IdWorker idWorker;
+
+    @Autowired
+    private ElasticJobDynamicConfig elasticjobDynamicConfig;
 
     /**
      * Activity条件+分页查询
@@ -157,18 +163,23 @@ public class ActivityServiceImpl implements ActivityService {
      */
     @Override
     public void update(Activity activity) {
-        activity.setBegintime(TimeUtil.replaceDate(activity.getStartdate(), activity.getSeckillTime().getStarttime()));
-        activity.setEndtime(TimeUtil.replaceDate(activity.getStartdate(), activity.getSeckillTime().getEndtime()));
+//        为了方便测试动态添加任务，注释业务代码
+//        activity.setBegintime(TimeUtil.replaceDate(activity.getStartdate(), activity.getSeckillTime().getStarttime()));
+//        activity.setEndtime(TimeUtil.replaceDate(activity.getStartdate(), activity.getSeckillTime().getEndtime()));
+//
+//        //如果结束时间<开始时间，则重新计算结束时间
+//        if (activity.getEndtime().getTime() <= activity.getBegintime().getTime()) {
+//            activity.setEndtime(TimeUtil.replaceDate(TimeUtil.addDateHour(activity.getStartdate(), 24), activity.getSeckillTime().getEndtime()));
+//        }
+//        activity.setTimeId(activity.getSeckillTime().getId());
+//        float times = TimeUtil.dif2hour(activity.getBegintime(), activity.getEndtime());
+//        activity.setTotalTime(times);
+//        //添加
+//        activityMapper.updateByPrimaryKeySelective(activity);
 
-        //如果结束时间<开始时间，则重新计算结束时间
-        if (activity.getEndtime().getTime() <= activity.getBegintime().getTime()) {
-            activity.setEndtime(TimeUtil.replaceDate(TimeUtil.addDateHour(activity.getStartdate(), 24), activity.getSeckillTime().getEndtime()));
-        }
-        activity.setTimeId(activity.getSeckillTime().getId());
-        float times = TimeUtil.dif2hour(activity.getBegintime(), activity.getEndtime());
-        activity.setTotalTime(times);
-        //添加
-        activityMapper.updateByPrimaryKeySelective(activity);
+        //定时任务调度，将活动结束时间作为任务开始执行时间
+        String cron = ElasticJobDynamicConfig.date2Cron(activity.getEndtime());
+        elasticjobDynamicConfig.addDynamicTask(activity.getId(), cron, 1, new DynamicTask(), activity.getId());
     }
 
     /**
